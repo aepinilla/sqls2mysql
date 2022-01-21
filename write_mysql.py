@@ -1,21 +1,21 @@
-#import pymysql
-# import pandas as pd
 from sqlalchemy import create_engine
-from read_sql_server import get_data
+from read_sqls import read_sqls
 
-from settings import settings_mysql
+from settings import settings_mysql, settings_sqls
 
 
-def write_data():
+def write_mysql():
     print('Escribiendo en el servidor...')
 
-    documento_tipos = get_data()
-    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost:5432/{db}"
-                           .format(user = settings_mysql["user"],
-                                   pw = settings_mysql["password"],
-                                   db = settings_mysql["db"],
+    data = read_sqls(settings_sqls)
+    engine_call = "mysql+pymysql://{user}:{pw}@" + settings_mysql['host'] + "/{db}"
+    engine = create_engine(engine_call
+                           .format(user=settings_mysql["user"],
+                                   pw=settings_mysql["password"],
+                                   db=settings_mysql["db"]))
 
-    documento_tipos.to_sql('movements', con = engine, if_exists = 'replace', chunksize = 1000)
+    data.to_sql('movements', con = engine, if_exists = 'replace', chunksize = 1000)
+
 
 if __name__ == "__main__":
-    write_data()
+    write_mysql()
