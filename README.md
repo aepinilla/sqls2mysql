@@ -1,9 +1,9 @@
 # Required packages
-pandas
-sqlalchemy
-pyodbc
-sqlalchemy
-pyinstaller
+- pandas
+- sqlalchemy
+- pyodbc
+- sqlalchemy
+- pyinstaller
 
 # Instructions
 1. Install ODBC Driver 17 for SQL Server: https://docs.microsoft.com/en-gb/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15
