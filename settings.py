@@ -3,6 +3,7 @@ settings_sqls = {
     "database": "DATABASE_NAME",
     "user": "USERNAME",
     "password": "PASSWORD",
+    "query": "SELECT * FROM DataTable"
 }
 
 settings_mysql = {

@@ -15,7 +15,7 @@ def read_sqls(settings):
         UID=settings_sqls['user'],
         PWD=settings_sqls['password'])
 
-    data_query = 'SELECT * FROM DataTable'
+    data_query = settings_sqls['query']
     data = pd.read_sql(data_query, conn)
 
     return data
